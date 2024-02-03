@@ -1,0 +1,42 @@
+:root {
+    --first-primary-color: #1F7A8C;
+    --second-primary-color: #534B62;
+    --contrast-color: #A499B3;
+    --dark-shades: #1B1725;
+    --light-shades: #D0BCD5;
+}
+
+body {
+    background-color: var(--contrast-color);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    display: flex;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+}
+.main {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+}
+
+.main img {
+    height: 13rem;
+    width: auto;
+}
+
+.main h1 {
+    font-family: 'Protest Riot', sans-serif;
+    color: var(--dark-shades);
+    font-size: 3rem;
+}
+
+.main h3 {
+    font-family: 'Josefin Sans', sans-serif;
+    color: var(--second-primary-color);
+    font-size: 1.2rem;
+    margin-top: -2svh;    
+}
