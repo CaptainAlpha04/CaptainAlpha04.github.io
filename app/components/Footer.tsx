@@ -5,7 +5,7 @@ function Footer() {
     const year = new Date().getFullYear();
 
     return (
-    <footer className="footer bg-base-200 text-base-content p-10 font-josefin">
+    <footer className="footer min-w-screen w-full bg-base-200 text-base-content p-10 font-josefin">
     <aside>
         <img src="/res/logo2.svg" alt="logo" className='opacity-15      '/>
         <p>
