@@ -28,7 +28,7 @@ function Header() {
       
       <Navigation />
 
-      <div className="font-josefin text-md gap-1 text-center">
+      <div className="font-josefin text-md gap-1 text-center z-10">
           <h1 className='font-extrabold'>MUHAMMAD</h1>
           <h1 className='font-light'>ALI</h1>
           <h1 className='font-extrabold'>IMRAN</h1>   

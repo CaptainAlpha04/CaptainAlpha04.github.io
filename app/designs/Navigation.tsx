@@ -7,6 +7,7 @@ const Menu = () => {
   const [innerWidth, setInnerWidth] = useState(0);
   const sectionIds = ['home', 'about', 'projects', 'contact'];
   const { activeSection, setActiveSection, sectionRefs } = useActiveSection(sectionIds);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -23,12 +24,36 @@ const Menu = () => {
     };
   }, []);
 
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  }
+
   if (innerWidth < 1200) {
     return (
       <>
-      <label className="btn btn-ghost swap swap-rotate">
+      {menuOpen && (
+        <nav className="fixed top-0 left-0 h-screen w-screen bg-base-100 z-50 flex flex-col justify-center items-center space-y-4 text-base-content font-josefin text-xl">
+          <Link to="home" smooth={true} duration={500} 
+          className={`cursor-pointer nav-link relative ${activeSection === 'home'? 'nav-selected': ''}`}
+          onClick={() => {setActiveSection('home'); toggleMenu()}}>Home</Link>
+          <span className="dividing-line"></span>
+          <Link to="about" smooth={true} duration={500} 
+          className={`cursor-pointer nav-link relative ${activeSection === 'about'? 'nav-selected': ''}`}
+          onClick={() => {setActiveSection('about'); toggleMenu()}}>About</Link>
+          <span className="dividing-line"></span>
+          <Link to="projects" smooth={true} duration={500} 
+          className={`cursor-pointer nav-link relative ${activeSection === 'projects'? 'nav-selected': ''}`}
+          onClick={() => {setActiveSection('projects'); toggleMenu()}}>Projects</Link>
+          <span className="dividing-line"></span>
+          <Link to="contact" smooth={true} duration={500} 
+          className={`cursor-pointer nav-link relative  ${activeSection === 'contact'? 'nav-selected': ''}`}
+          onClick={() => {setActiveSection('contact'); toggleMenu()}}>Contact</Link>
+        </nav>
+      
+      )}
+      <label className="btn btn-ghost swap swap-rotate z-50">
         {/* this hidden checkbox controls the state */}
-        <input type="checkbox" />
+        <input type="checkbox" checked={menuOpen} onChange={toggleMenu}/>
 
         {/* hamburger icon */}
         <svg

@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
 function ThemeSwitch() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState<boolean | null>(null); // Initial state set to null
 
   useEffect(() => {
-    setIsMounted(true);
     if (typeof window !== 'undefined') {
       const storedIsDarkMode = JSON.parse(localStorage.getItem('isDark') || 'false');
       setIsDarkMode(storedIsDarkMode);
@@ -13,14 +11,18 @@ function ThemeSwitch() {
   }, []);
 
   useEffect(() => {
-    if (isMounted) {
+    if (isDarkMode !== null) {
       localStorage.setItem('isDark', JSON.stringify(isDarkMode));
     }
-  }, [isDarkMode, isMounted]);
+  }, [isDarkMode]);
 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
   };
+
+  if (isDarkMode === null) {
+    return null; // Render nothing or a loading indicator until the theme is loaded
+  }
 
   return (
     <div>
@@ -29,6 +31,7 @@ function ThemeSwitch() {
         <input
           type="checkbox"
           className="theme-controller"
+          value = "emerald"
           checked={isDarkMode}
           onChange={toggleTheme}
         />
