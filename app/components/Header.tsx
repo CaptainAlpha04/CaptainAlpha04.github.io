@@ -51,7 +51,7 @@ function Header() {
 
         {/* Navigation */}
         <Navigation />
-
+        
         {/* Theme Switch */}
         <ThemeSwitch />
       </div>
